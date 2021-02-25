@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { render } from '@testing-library/react';
+import TopNavbar from './components/TopNavbar';
+import Contactus from "./info/Aboutus";
+import Aboutus from './info/Aboutus';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+      <Router>
+        <div className="App">
+            <TopNavbar />
+            <Switch>
+              <Route path="/" exact component={Main} />
+              <Route path="/info/contactus" component={Contactus} />
+              <Route path="/info/about" component={Aboutus} />
+            </Switch>          
+        </div>
+      </Router>
+    );
 }
+
+const Main = ()=>(
+  <div>
+    <h1>Main</h1>
+    <h2> More Stuff to be added here soon</h2>
+  </div>
+);
 
 export default App;
